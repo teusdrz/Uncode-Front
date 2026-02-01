@@ -6,6 +6,14 @@ export async function GET(
     { params }: { params: { id: string } }
 ) {
     const id = parseInt(params.id);
+
+    if (isNaN(id) || id <= 0) {
+        return NextResponse.json(
+            { error: 'Invalid product ID' },
+            { status: 400 }
+        );
+    }
+
     const product = products.find((p) => p.id === id);
 
     if (!product) {
