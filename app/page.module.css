@@ -34,8 +34,8 @@
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: var(--spacing-md);
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--spacing-lg);
     margin-top: var(--spacing-xl);
 }
 
@@ -45,8 +45,8 @@
     }
 
     .grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: var(--spacing-lg);
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        gap: var(--spacing-xl);
     }
 }
 
@@ -73,7 +73,7 @@
 
     .grid {
         grid-template-columns: repeat(4, 1fr);
-        gap: var(--spacing-lg);
+        gap: var(--spacing-xl);
     }
 }
 
