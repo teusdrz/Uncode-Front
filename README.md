@@ -2,30 +2,19 @@
 
 Mini e-commerce funcional desenvolvido com Next.js, TypeScript e Zustand.
 
-## 🚀 Deploy
+## Deploy
 
-**URL do projeto:** [Será adicionado após deploy na Vercel]
+URL do projeto: [Aguardando deploy]
 
-Para fazer o deploy:
+## Sobre o Projeto
 
-1. Push do código para GitHub
-2. Acesse [vercel.com](https://vercel.com)
-3. Importe o repositório
-4. Deploy automático
-
-## 📋 Sobre o Projeto
-
-E-commerce completo com listagem de produtos, página de detalhes, carrinho de compras funcional e API integrada.
+E-commerce completo com listagem de produtos, página de detalhes, carrinho de compras e API integrada.
 
 ### Por que Next.js?
 
-- **Framework moderno e completo**: Next.js oferece SSR, SSG e API Routes em um único framework
-- **Performance otimizada**: Carregamento rápido com otimização automática de imagens e code splitting
-- **SEO friendly**: Renderização server-side melhora indexação pelos buscadores
-- **Developer Experience**: Hot reload, TypeScript integrado e estrutura organizada
-- **Deploy simplificado**: Integração nativa com Vercel para deploy instantâneo
+Next.js foi escolhido por oferecer uma solução completa e moderna para desenvolvimento web. O framework permite Server-Side Rendering e Static Site Generation nativamente, melhorando performance e SEO. As API Routes eliminam a necessidade de um servidor backend separado. A otimização automática de imagens e code splitting resultam em melhor experiência do usuário. A integração com TypeScript e o hot reload proporcionam excelente experiência de desenvolvimento.
 
-## 📁 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```
 Uncode-Front/
@@ -71,19 +60,19 @@ Uncode-Front/
 └── next.config.js
 ```
 
-## 🛠️ Tecnologias
+## Tecnologias
 
-- **Next.js 14**: Framework React com App Router
-- **TypeScript**: Tipagem estática para código mais seguro
-- **Zustand**: Gerenciamento de estado leve e performático
-- **CSS Modules**: Estilos com escopo de componente
-- **Next.js API Routes**: Backend serverless integrado
+- Next.js 14: Framework React com App Router
+- TypeScript: Tipagem estática para código mais seguro
+- Zustand: Gerenciamento de estado leve e performático
+- CSS Modules: Estilos com escopo de componente
+- Next.js API Routes: Backend serverless integrado
 
-## 💻 Como Rodar Localmente
+## Como Rodar Localmente
 
 ### Pré-requisitos
 
-- Node.js 18+ instalado
+- Node.js 18 ou superior
 - npm ou yarn
 
 ### Instalação
@@ -111,84 +100,64 @@ npm start        # Inicia servidor de produção
 npm run lint     # Executa linter
 ```
 
-## 🎯 Funcionalidades
+## Funcionalidades
 
-### Obrigatórias ✅
+### Obrigatórias
 
-- ✅ Listagem de produtos com imagem, nome e preço
-- ✅ Página de detalhes do produto
-- ✅ Header com logo e ícone do carrinho
-- ✅ Footer simples
-- ✅ Minicarrinho (drawer/sidebar)
-- ✅ Adicionar produtos ao carrinho
-- ✅ Alterar quantidade no carrinho (+/-)
-- ✅ Remover item do carrinho
-- ✅ Total atualizado em tempo real
-- ✅ Responsividade mobile-first (375px - 1440px)
-- ✅ API com endpoints GET /products e GET /products/:id
-- ✅ Deploy público
+- Listagem de produtos com imagem, nome e preço
+- Página de detalhes do produto
+- Header com logo e ícone do carrinho
+- Footer simples
+- Minicarrinho (drawer/sidebar)
+- Adicionar produtos ao carrinho
+- Alterar quantidade no carrinho
+- Remover item do carrinho
+- Total atualizado em tempo real
+- Responsividade mobile-first (375px - 1440px)
+- API com endpoints GET /products e GET /products/:id
+- Deploy público
 
-### Diferenciais ⭐
+### Diferenciais
 
-- ⭐ **TypeScript**: Código totalmente tipado
-- ⭐ **Gerenciamento de estado**: Zustand com persistência em localStorage
-- ⭐ **Animações e transições**: Feedback visual em todas as interações
-- ⭐ **Filtro e busca**: Busca em tempo real + filtro por categoria
-- ⭐ **Acessibilidade (a11y)**: 
-  - Labels ARIA completos
-  - Navegação por teclado
-  - Role e aria-live para leitores de tela
-  - Focus-visible em todos os elementos interativos
-- ⭐ **SEO**: 
-  - Metadata otimizada por página
-  - OpenGraph para redes sociais
-  - Keywords relevantes
-  - Static Generation para melhor indexação
-- ⭐ **Sistema de notificações**: Toast com feedback visual
-- ⭐ **Scroll to top**: Botão para voltar ao topo
-- ⭐ **UX melhorada**: Estados de loading e empty
+- TypeScript: Código totalmente tipado
+- Gerenciamento de estado: Zustand com persistência em localStorage
+- Animações e transições: Feedback visual em todas as interações
+- Filtro e busca: Busca em tempo real e filtro por categoria
+- Acessibilidade (a11y): Labels ARIA, navegação por teclado, focus-visible
+- SEO: Metadata otimizada, OpenGraph, keywords relevantes
+- Sistema de notificações: Toast com feedback visual
+- Skeleton loading: Estados de carregamento
+- Scroll to top: Navegação facilitada
 
-## 🎨 Decisões Técnicas
+## Decisões Técnicas
 
 ### Arquitetura
 
-- **App Router do Next.js**: Aproveita Server Components para melhor performance
-- **CSS Modules**: Evita conflitos de estilos mantendo escopo local
-- **Componentização**: Componentes pequenos e reutilizáveis
-- **Tipagem forte**: TypeScript em todo o projeto previne erros
+App Router do Next.js foi utilizado para aproveitar Server Components e melhor performance. CSS Modules evitam conflitos de estilos mantendo escopo local. A componentização segue o princípio de componentes pequenos e reutilizáveis. TypeScript em todo o projeto previne erros em tempo de desenvolvimento.
 
 ### Estado do Carrinho
 
-- **Zustand**: Escolhido por ser mais leve que Redux e mais simples que Context API
-- **Persistência**: Carrinho salvo no localStorage automaticamente
-- **Computed values**: Funções para calcular totais dinamicamente
+Zustand foi escolhido por ser mais leve que Redux e mais simples que Context API. A persistência automática no localStorage mantém o carrinho entre sessões. Funções computadas calculam totais dinamicamente sem re-renders desnecessários.
 
 ### Estilização
 
-- **Mobile-first**: Estilos base para mobile com media queries para desktop
-- **CSS Variables**: Cores e tokens centralizados para fácil manutenção
-- **Grid responsivo**: Layout adapta automaticamente ao tamanho da tela
+A abordagem mobile-first define estilos base para dispositivos móveis com media queries progressivas para desktop. CSS Variables centralizam cores e tokens para fácil manutenção. O grid responsivo adapta automaticamente ao tamanho da tela.
 
 ### API
 
-- **Next.js API Routes**: Elimina necessidade de servidor separado
-- **Server-side data fetching**: Produtos carregados no servidor para melhor SEO
+Next.js API Routes eliminam a necessidade de servidor separado. Server-side data fetching garante que produtos sejam carregados no servidor para melhor SEO e performance.
 
-## 📱 Responsividade
+## Responsividade
 
-- **Mobile**: 375px - Layout em coluna única
-- **Desktop**: 1440px+ - Grid de produtos e layout otimizado
+- Mobile: 375px - Layout em coluna única
+- Desktop: 1440px - Grid de produtos e layout otimizado
 
-## 🚢 Deploy
+## Deploy
 
-O projeto está configurado para deploy na Vercel:
+O projeto está configurado para deploy na Vercel. Basta fazer push para o GitHub e conectar o repositório na plataforma. O deploy é automático a cada push na branch principal.
 
-1. Push do código para GitHub
-2. Conecte o repositório na Vercel
-3. Deploy automático a cada push
+Outras opções compatíveis: Netlify, Render.
 
-Outras opções: Netlify, Render
-
-## 📝 Licença
+## Licença
 
 Projeto desenvolvido para fins de avaliação técnica.
