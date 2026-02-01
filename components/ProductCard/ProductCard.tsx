@@ -10,61 +10,61 @@ import Toast from '@/components/Toast/Toast';
 import styles from './ProductCard.module.css';
 
 interface ProductCardProps {
-  product: Product;
+    product: Product;
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
-  const [isAdding, setIsAdding] = useState(false);
-  const [showToast, setShowToast] = useState(false);
-  const addItem = useCartStore((state) => state.addItem);
+    const [isAdding, setIsAdding] = useState(false);
+    const [showToast, setShowToast] = useState(false);
+    const addItem = useCartStore((state) => state.addItem);
 
-  const handleAddToCart = () => {
-    setIsAdding(true);
-    addItem(product);
-    setShowToast(true);
-    
-    setTimeout(() => {
-      setIsAdding(false);
-    }, 600);
-  };
+    const handleAddToCart = () => {
+        setIsAdding(true);
+        addItem(product);
+        setShowToast(true);
 
-  return (
-    <article className={styles.card}>
-      <Link href={`/products/${product.id}`} className={styles.imageLink}>
-        <div className={styles.imageWrapper}>
-          <Image
-            src={product.image}
-            alt={product.name}
-            width={300}
-            height={300}
-            className={styles.image}
-          />
-        </div>
-      </Link>
+        setTimeout(() => {
+            setIsAdding(false);
+        }, 600);
+    };
 
-      <div className={styles.content}>
-        <Link href={`/products/${product.id}`}>
-          <h3 className={styles.title}>{product.name}</h3>
-        </Link>
-        <p className={styles.category}>{product.category}</p>
-        <p className={styles.price}>{formatPrice(product.price)}</p>
+    return (
+        <article className={styles.card}>
+            <Link href={`/products/${product.id}`} className={styles.imageLink}>
+                <div className={styles.imageWrapper}>
+                    <Image
+                        src={product.image}
+                        alt={product.name}
+                        width={300}
+                        height={300}
+                        className={styles.image}
+                    />
+                </div>
+            </Link>
 
-        <button 
-          className={`${styles.button} ${isAdding ? styles.adding : ''}`}
-          onClick={handleAddToCart}
-          disabled={isAdding}
-        >
-          {isAdding ? '✓ Adicionado!' : 'Adicionar ao Carrinho'}
-        </button>
-      </div>
+            <div className={styles.content}>
+                <Link href={`/products/${product.id}`}>
+                    <h3 className={styles.title}>{product.name}</h3>
+                </Link>
+                <p className={styles.category}>{product.category}</p>
+                <p className={styles.price}>{formatPrice(product.price)}</p>
 
-      {showToast && (
-        <Toast
-          message={`${product.name} adicionado ao carrinho!`}
-          type="success"
-          onClose={() => setShowToast(false)}
-        />
-      )}
-    </article>
-  );
+                <button
+                    className={`${styles.button} ${isAdding ? styles.adding : ''}`}
+                    onClick={handleAddToCart}
+                    disabled={isAdding}
+                >
+                    {isAdding ? '✓ Adicionado!' : 'Adicionar ao Carrinho'}
+                </button>
+            </div>
+
+            {showToast && (
+                <Toast
+                    message={`${product.name} adicionado ao carrinho!`}
+                    type="success"
+                    onClose={() => setShowToast(false)}
+                />
+            )}
+        </article>
+    );
 }

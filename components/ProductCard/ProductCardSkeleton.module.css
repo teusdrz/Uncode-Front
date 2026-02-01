@@ -1,69 +1,68 @@
 .skeleton {
-  background: linear-gradient(
-    90deg,
-    var(--bg-secondary) 25%,
-    #f0f0f0 50%,
-    var(--bg-secondary) 75%
-  );
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-  border-radius: 0.75rem;
+    background: linear-gradient(90deg,
+            var(--bg-secondary) 25%,
+            #f0f0f0 50%,
+            var(--bg-secondary) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 0.75rem;
 }
 
 .card {
-  border: 1px solid var(--border);
-  border-radius: 0.75rem;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .image {
-  width: 100%;
-  padding-top: 100%;
-  background: var(--bg-secondary);
+    width: 100%;
+    padding-top: 100%;
+    background: var(--bg-secondary);
 }
 
 .content {
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  flex: 1;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex: 1;
 }
 
 .title {
-  height: 1.25rem;
-  width: 80%;
-  border-radius: 0.25rem;
+    height: 1.25rem;
+    width: 80%;
+    border-radius: 0.25rem;
 }
 
 .category {
-  height: 1rem;
-  width: 40%;
-  border-radius: 0.25rem;
+    height: 1rem;
+    width: 40%;
+    border-radius: 0.25rem;
 }
 
 .price {
-  height: 1.5rem;
-  width: 50%;
-  border-radius: 0.25rem;
-  margin-top: auto;
+    height: 1.5rem;
+    width: 50%;
+    border-radius: 0.25rem;
+    margin-top: auto;
 }
 
 .button {
-  height: 2.75rem;
-  width: 100%;
-  border-radius: 0.5rem;
-  margin-top: 0.5rem;
+    height: 2.75rem;
+    width: 100%;
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
 }
 
 @keyframes shimmer {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: -200% 0;
-  }
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
 }

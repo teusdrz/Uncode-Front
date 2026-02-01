@@ -1,21 +1,21 @@
 .button {
-  width: 100%;
-  max-width: 400px;
-  background: var(--primary);
-  color: white;
-  border: none;
-  border-radius: 0.75rem;
-  padding: 1rem 2rem;
-  font-size: 1.125rem;
-  font-weight: 600;
-  transition: background 0.2s, transform 0.1s;
+    width: 100%;
+    max-width: 400px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 0.75rem;
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    transition: background 0.2s, transform 0.1s;
 }
 
 .button:hover {
-  background: var(--primary-dark);
-  transform: translateY(-2px);
+    background: var(--primary-dark);
+    transform: translateY(-2px);
 }
 
 .button:active {
-  transform: translateY(0);
+    transform: translateY(0);
 }
