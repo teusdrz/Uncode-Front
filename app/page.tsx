@@ -8,6 +8,7 @@ import Footer from '@/components/Footer/Footer';
 import Cart from '@/components/Cart/Cart';
 import SearchBar from '@/components/SearchBar/SearchBar';
 import CategoryFilter from '@/components/CategoryFilter/CategoryFilter';
+import ScrollToTop from '@/components/ScrollToTop/ScrollToTop';
 import styles from './page.module.css';
 
 export default function Home() {
@@ -100,6 +101,7 @@ export default function Home() {
         </div>
       </main>
       <Footer />
+      <ScrollToTop />
     </>
   );
 }

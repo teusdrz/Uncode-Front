@@ -93,6 +93,11 @@
   background: var(--primary-dark);
 }
 
+.button.adding {
+  background: var(--success);
+  transform: scale(0.95);
+}
+
 @media (min-width: 768px) {
   .title {
     font-size: 1.125rem;

@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Product } from '@/types/product';
@@ -12,10 +13,18 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
+  const [isAdding, setIsAdding] = useState(false);
   const addItem = useCartStore((state) => state.addItem);
+  const toggleCart = useCartStore((state) => state.toggleCart);
 
   const handleAddToCart = () => {
+    setIsAdding(true);
     addItem(product);
+    
+    setTimeout(() => {
+      setIsAdding(false);
+      toggleCart();
+    }, 300);
   };
 
   return (
@@ -39,8 +48,12 @@ export default function ProductCard({ product }: ProductCardProps) {
         <p className={styles.category}>{product.category}</p>
         <p className={styles.price}>{formatPrice(product.price)}</p>
 
-        <button className={styles.button} onClick={handleAddToCart}>
-          Adicionar ao Carrinho
+        <button 
+          className={`${styles.button} ${isAdding ? styles.adding : ''}`}
+          onClick={handleAddToCart}
+          disabled={isAdding}
+        >
+          {isAdding ? '✓ Adicionado!' : 'Adicionar ao Carrinho'}
         </button>
       </div>
     </article>
