@@ -1,21 +1,37 @@
 .button {
     width: 100%;
     max-width: 400px;
-    background: var(--primary);
+    background: var(--color-primary);
     color: white;
     border: none;
-    border-radius: 0.75rem;
-    padding: 1rem 2rem;
-    font-size: 1.125rem;
-    font-weight: 600;
-    transition: background 0.2s, transform 0.1s;
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg) var(--spacing-2xl);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-md);
+    cursor: pointer;
 }
 
 .button:hover {
-    background: var(--primary-dark);
+    background: var(--color-primary-dark);
     transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
 }
 
 .button:active {
     transform: translateY(0);
+    box-shadow: var(--shadow-md);
+}
+
+.button:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+@media (min-width: 768px) {
+    .button {
+        font-size: var(--font-size-xl);
+        padding: var(--spacing-xl) var(--spacing-2xl);
+    }
 }

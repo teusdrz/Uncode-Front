@@ -1,27 +1,28 @@
 .scrollButton {
     position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    width: 3rem;
-    height: 3rem;
-    background: var(--primary);
+    bottom: var(--spacing-2xl);
+    right: var(--spacing-2xl);
+    width: 3.5rem;
+    height: 3.5rem;
+    background: var(--color-primary);
     color: white;
     border: none;
-    border-radius: 50%;
+    border-radius: var(--border-radius-full);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
-    z-index: 999;
-    animation: fadeIn 0.3s ease;
+    box-shadow: var(--shadow-lg);
+    transition: all var(--transition-base);
+    z-index: var(--z-index-fixed);
+    animation: fadeIn var(--transition-base) ease;
+    font-size: var(--font-size-xl);
 }
 
 .scrollButton:hover {
-    background: var(--primary-dark);
+    background: var(--color-primary-dark);
     transform: translateY(-4px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow-xl);
 }
 
 .scrollButton:active {
@@ -29,7 +30,7 @@
 }
 
 .scrollButton:focus-visible {
-    outline: 2px solid var(--primary);
+    outline: 2px solid var(--color-primary);
     outline-offset: 4px;
 }
 
@@ -45,11 +46,20 @@
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
     .scrollButton {
-        bottom: 1.5rem;
-        right: 1.5rem;
-        width: 2.5rem;
-        height: 2.5rem;
+        bottom: var(--spacing-xl);
+        right: var(--spacing-xl);
+        width: 3rem;
+        height: 3rem;
+        font-size: var(--font-size-lg);
+    }
+}
+
+@media (min-width: 768px) {
+    .scrollButton {
+        width: 4rem;
+        height: 4rem;
+        font-size: var(--font-size-2xl);
     }
 }

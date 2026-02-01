@@ -35,7 +35,8 @@
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: var(--spacing-lg);
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-xl);
 }
 
 @media (min-width: 640px) {
@@ -44,8 +45,8 @@
     }
 
     .grid {
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        gap: var(--spacing-xl);
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-lg);
     }
 }
 
@@ -60,7 +61,8 @@
     }
 
     .grid {
-        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-xl);
     }
 }
 
@@ -71,7 +73,7 @@
 
     .grid {
         grid-template-columns: repeat(4, 1fr);
-        gap: var(--spacing-2xl);
+        gap: var(--spacing-lg);
     }
 }
 
@@ -82,5 +84,6 @@
 
     .grid {
         grid-template-columns: repeat(5, 1fr);
+        gap: var(--spacing-xl);
     }
 }
