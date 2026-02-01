@@ -1,18 +1,26 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { Product } from '@/types/product';
 import ProductCard from '@/components/ProductCard/ProductCard';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
 import Cart from '@/components/Cart/Cart';
 import SearchBar from '@/components/SearchBar/SearchBar';
+import CategoryFilter from '@/components/CategoryFilter/CategoryFilter';
 import styles from './page.module.css';
 
 export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('');
+
+  const categories = useMemo(() => {
+    const uniqueCategories = new Set(products.map((p) => p.category));
+    return Array.from(uniqueCategories).sort();
+  }, [products]);
 
   useEffect(() => {
     async function fetchProducts() {
@@ -30,20 +38,32 @@ export default function Home() {
     fetchProducts();
   }, []);
 
-  const handleSearch = (query: string) => {
-    if (!query.trim()) {
-      setFilteredProducts(products);
-      return;
+  useEffect(() => {
+    let filtered = products;
+
+    if (selectedCategory) {
+      filtered = filtered.filter((p) => p.category === selectedCategory);
     }
 
-    const lowercaseQuery = query.toLowerCase();
-    const filtered = products.filter(
-      (product) =>
-        product.name.toLowerCase().includes(lowercaseQuery) ||
-        product.description.toLowerCase().includes(lowercaseQuery) ||
-        product.category.toLowerCase().includes(lowercaseQuery)
-    );
+    if (searchQuery.trim()) {
+      const lowercaseQuery = searchQuery.toLowerCase();
+      filtered = filtered.filter(
+        (product) =>
+          product.name.toLowerCase().includes(lowercaseQuery) ||
+          product.description.toLowerCase().includes(lowercaseQuery) ||
+          product.category.toLowerCase().includes(lowercaseQuery)
+      );
+    }
+
     setFilteredProducts(filtered);
+  }, [searchQuery, selectedCategory, products]);
+
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+  };
+
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategory(category);
   };
 
   return (
@@ -56,10 +76,18 @@ export default function Home() {
           
           <SearchBar onSearch={handleSearch} />
 
+          <CategoryFilter
+            categories={categories}
+            selectedCategory={selectedCategory}
+            onCategoryChange={handleCategoryChange}
+          />
+
           {loading ? (
-            <div className={styles.loading}>Carregando produtos...</div>
+            <div className={styles.loading} role="status" aria-live="polite">
+              Carregando produtos...
+            </div>
           ) : filteredProducts.length === 0 ? (
-            <div className={styles.empty}>
+            <div className={styles.empty} role="status" aria-live="polite">
               <p>Nenhum produto encontrado</p>
             </div>
           ) : (

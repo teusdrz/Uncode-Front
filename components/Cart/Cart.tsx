@@ -13,10 +13,20 @@ export default function Cart() {
 
   return (
     <>
-      <div className={styles.overlay} onClick={toggleCart} />
-      <aside className={styles.cart}>
+      <div 
+        className={styles.overlay} 
+        onClick={toggleCart}
+        role="presentation"
+        aria-hidden="true"
+      />
+      <aside 
+        className={styles.cart}
+        role="dialog"
+        aria-label="Carrinho de compras"
+        aria-modal="true"
+      >
         <div className={styles.header}>
-          <h2 className={styles.title}>Carrinho</h2>
+          <h2 className={styles.title} id="cart-title">Carrinho</h2>
           <button
             className={styles.closeButton}
             onClick={toggleCart}
