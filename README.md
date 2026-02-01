@@ -14,52 +14,6 @@ E-commerce completo com listagem de produtos, página de detalhes, carrinho de c
 
 Next.js foi escolhido por oferecer uma solução completa e moderna para desenvolvimento web. O framework permite Server-Side Rendering e Static Site Generation nativamente, melhorando performance e SEO. As API Routes eliminam a necessidade de um servidor backend separado. A otimização automática de imagens e code splitting resultam em melhor experiência do usuário. A integração com TypeScript e o hot reload proporcionam excelente experiência de desenvolvimento.
 
-## Estrutura do Projeto
-
-```
-Uncode-Front/
-├── app/
-│   ├── api/
-│   │   └── products/
-│   │       ├── route.ts              # GET /api/products
-│   │       └── [id]/
-│   │           └── route.ts          # GET /api/products/:id
-│   ├── products/
-│   │   └── [id]/
-│   │       ├── page.tsx              # Página de detalhes do produto
-│   │       ├── page.module.css
-│   │       ├── AddToCartButton.tsx
-│   │       └── AddToCartButton.module.css
-│   ├── layout.tsx                    # Layout global
-│   ├── page.tsx                      # Home - listagem de produtos
-│   ├── page.module.css
-│   └── globals.css
-├── components/
-│   ├── Cart/
-│   │   ├── Cart.tsx                  # Minicarrinho (drawer)
-│   │   └── Cart.module.css
-│   ├── Header/
-│   │   ├── Header.tsx                # Header com logo e carrinho
-│   │   └── Header.module.css
-│   ├── Footer/
-│   │   ├── Footer.tsx                # Footer simples
-│   │   └── Footer.module.css
-│   └── ProductCard/
-│       ├── ProductCard.tsx           # Card de produto
-│       └── ProductCard.module.css
-├── store/
-│   └── cart.ts                       # Estado global do carrinho (Zustand)
-├── lib/
-│   ├── api.ts                        # Funções para consumir API
-│   └── utils.ts                      # Utilitários (formatação)
-├── types/
-│   └── product.ts                    # Tipos TypeScript
-├── products.json                     # Dados dos produtos
-├── package.json
-├── tsconfig.json
-└── next.config.js
-```
-
 ## Tecnologias
 
 - Next.js 14: Framework React com App Router
