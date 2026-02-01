@@ -3,6 +3,7 @@
 import { useEffect, useState, useMemo } from 'react';
 import { Product } from '@/types/product';
 import ProductCard from '@/components/ProductCard/ProductCard';
+import ProductCardSkeleton from '@/components/ProductCard/ProductCardSkeleton';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
 import Cart from '@/components/Cart/Cart';
@@ -84,8 +85,10 @@ export default function Home() {
           />
 
           {loading ? (
-            <div className={styles.loading} role="status" aria-live="polite">
-              Carregando produtos...
+            <div className={styles.grid}>
+              {Array.from({ length: 8 }).map((_, index) => (
+                <ProductCardSkeleton key={index} />
+              ))}
             </div>
           ) : filteredProducts.length === 0 ? (
             <div className={styles.empty} role="status" aria-live="polite">
