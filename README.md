@@ -131,10 +131,22 @@ npm run lint     # Executa linter
 ### Diferenciais ⭐
 
 - ⭐ **TypeScript**: Código totalmente tipado
-- ⭐ **Gerenciamento de estado**: Zustand com persistência
-- ⭐ **Animações**: Transições suaves no carrinho e cards
-- ⭐ **SEO**: Metadata otimizada
-- ⭐ **Acessibilidade**: Labels ARIA e navegação por teclado
+- ⭐ **Gerenciamento de estado**: Zustand com persistência em localStorage
+- ⭐ **Animações e transições**: Feedback visual em todas as interações
+- ⭐ **Filtro e busca**: Busca em tempo real + filtro por categoria
+- ⭐ **Acessibilidade (a11y)**: 
+  - Labels ARIA completos
+  - Navegação por teclado
+  - Role e aria-live para leitores de tela
+  - Focus-visible em todos os elementos interativos
+- ⭐ **SEO**: 
+  - Metadata otimizada por página
+  - OpenGraph para redes sociais
+  - Keywords relevantes
+  - Static Generation para melhor indexação
+- ⭐ **Sistema de notificações**: Toast com feedback visual
+- ⭐ **Scroll to top**: Botão para voltar ao topo
+- ⭐ **UX melhorada**: Estados de loading e empty
 
 ## 🎨 Decisões Técnicas
 

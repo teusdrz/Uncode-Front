@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { Product } from '@/types/product';
 import { formatPrice } from '@/lib/utils';
 import { useCartStore } from '@/store/cart';
+import Toast from '@/components/Toast/Toast';
 import styles from './ProductCard.module.css';
 
 interface ProductCardProps {
@@ -14,17 +15,17 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   const [isAdding, setIsAdding] = useState(false);
+  const [showToast, setShowToast] = useState(false);
   const addItem = useCartStore((state) => state.addItem);
-  const toggleCart = useCartStore((state) => state.toggleCart);
 
   const handleAddToCart = () => {
     setIsAdding(true);
     addItem(product);
+    setShowToast(true);
     
     setTimeout(() => {
       setIsAdding(false);
-      toggleCart();
-    }, 300);
+    }, 600);
   };
 
   return (
@@ -56,6 +57,14 @@ export default function ProductCard({ product }: ProductCardProps) {
           {isAdding ? '✓ Adicionado!' : 'Adicionar ao Carrinho'}
         </button>
       </div>
+
+      {showToast && (
+        <Toast
+          message={`${product.name} adicionado ao carrinho!`}
+          type="success"
+          onClose={() => setShowToast(false)}
+        />
+      )}
     </article>
   );
 }
