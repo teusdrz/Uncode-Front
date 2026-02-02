@@ -146,6 +146,9 @@
     overflow: hidden;
     background: var(--color-background-secondary);
     box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .itemImage img {
@@ -153,6 +156,7 @@
     height: 100%;
     object-fit: cover;
     transition: transform var(--transition-base);
+    display: block;
 }
 
 .item:hover .itemImage img {

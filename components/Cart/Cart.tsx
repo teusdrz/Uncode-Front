@@ -3,11 +3,36 @@
 import { useCartStore } from '@/store/cart';
 import { formatPrice } from '@/lib/utils';
 import Image from 'next/image';
+import { useEffect } from 'react';
 import styles from './Cart.module.css';
 
 export default function Cart() {
     const { items, isOpen, toggleCart, updateQuantity, removeItem, getTotalPrice } = useCartStore();
     const total = getTotalPrice();
+
+    // Fechar com tecla Escape
+    useEffect(() => {
+        const handleEscape = (e: KeyboardEvent) => {
+            if (e.key === 'Escape' && isOpen) {
+                toggleCart();
+            }
+        };
+
+        document.addEventListener('keydown', handleEscape);
+        return () => document.removeEventListener('keydown', handleEscape);
+    }, [isOpen, toggleCart]);
+
+    // Prevenir scroll do body quando carrinho aberto
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [isOpen]);
 
     if (!isOpen) return null;
 
@@ -22,11 +47,13 @@ export default function Cart() {
             <aside
                 className={styles.cart}
                 role="dialog"
-                aria-label="Carrinho de compras"
+                aria-labelledby="cart-title"
                 aria-modal="true"
             >
                 <div className={styles.header}>
-                    <h2 className={styles.title} id="cart-title">Carrinho</h2>
+                    <h2 className={styles.title} id="cart-title">
+                        Carrinho ({items.length} {items.length === 1 ? 'item' : 'itens'})
+                    </h2>
                     <button
                         className={styles.closeButton}
                         onClick={toggleCart}
@@ -63,6 +90,8 @@ export default function Cart() {
                                             alt={item.name}
                                             width={80}
                                             height={80}
+                                            style={{ objectFit: 'cover' }}
+                                            unoptimized
                                         />
                                     </div>
 
@@ -71,19 +100,23 @@ export default function Cart() {
                                         <p className={styles.itemPrice}>{formatPrice(item.price)}</p>
 
                                         <div className={styles.itemActions}>
-                                            <div className={styles.quantity}>
+                                            <div className={styles.quantity} role="group" aria-label={`Quantidade de ${item.name}`}>
                                                 <button
                                                     className={styles.quantityButton}
                                                     onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                                                    aria-label="Diminuir quantidade"
+                                                    aria-label={`Diminuir quantidade de ${item.name}`}
+                                                    disabled={item.quantity <= 1}
                                                 >
                                                     −
                                                 </button>
-                                                <span className={styles.quantityValue}>{item.quantity}</span>
+                                                <span className={styles.quantityValue} aria-live="polite">
+                                                    {item.quantity}
+                                                </span>
                                                 <button
                                                     className={styles.quantityButton}
                                                     onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                                                    aria-label="Aumentar quantidade"
+                                                    aria-label={`Aumentar quantidade de ${item.name}`}
+                                                    disabled={item.quantity >= item.stock}
                                                 >
                                                     +
                                                 </button>
@@ -92,7 +125,7 @@ export default function Cart() {
                                             <button
                                                 className={styles.removeButton}
                                                 onClick={() => removeItem(item.id)}
-                                                aria-label="Remover item"
+                                                aria-label={`Remover ${item.name} do carrinho`}
                                             >
                                                 Remover
                                             </button>

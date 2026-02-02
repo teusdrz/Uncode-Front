@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import styles from './Toast.module.css';
 
 interface ToastProps {
@@ -12,6 +13,12 @@ interface ToastProps {
 
 export default function Toast({ message, type = 'success', duration = 3000, onClose }: ToastProps) {
     const [isVisible, setIsVisible] = useState(true);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+        return () => setMounted(false);
+    }, []);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -22,18 +29,22 @@ export default function Toast({ message, type = 'success', duration = 3000, onCl
         return () => clearTimeout(timer);
     }, [duration, onClose]);
 
-    return (
+    if (!mounted) return null;
+
+    return createPortal(
         <div
             className={`${styles.toast} ${styles[type]} ${!isVisible ? styles.hide : ''}`}
             role="alert"
-            aria-live="polite"
+            aria-live="assertive"
+            aria-atomic="true"
         >
-            <span className={styles.icon}>
+            <div className={styles.icon} aria-hidden="true">
                 {type === 'success' && '✓'}
                 {type === 'error' && '✕'}
                 {type === 'info' && 'ℹ'}
-            </span>
-            <span className={styles.message}>{message}</span>
-        </div>
+            </div>
+            <div className={styles.message}>{message}</div>
+        </div>,
+        document.body
     );
 }

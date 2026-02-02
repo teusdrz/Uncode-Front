@@ -4,7 +4,9 @@ Mini e-commerce funcional desenvolvido com Next.js, TypeScript e Zustand.
 
 ## Deploy
 
-URL do projeto: [Aguardando deploy]
+**🚀 URL do projeto:** [https://uncode-front.vercel.app](https://uncode-front.vercel.app)
+
+**Status:** ✅ Produção | **Plataforma:** Vercel
 
 ## Sobre o Projeto
 
@@ -77,15 +79,30 @@ npm run lint     # Executa linter
 
 ### Diferenciais
 
-- TypeScript: Código totalmente tipado
-- Gerenciamento de estado: Zustand com persistência em localStorage
-- Animações e transições: Feedback visual em todas as interações
-- Filtro e busca: Busca em tempo real e filtro por categoria
-- Acessibilidade (a11y): Labels ARIA, navegação por teclado, focus-visible
-- SEO: Metadata otimizada, OpenGraph, keywords relevantes
-- Sistema de notificações: Toast com feedback visual
-- Skeleton loading: Estados de carregamento
-- Scroll to top: Navegação facilitada
+- **TypeScript**: Código totalmente tipado com strict mode
+- **Testes**: 18 testes unitários com Jest e Testing Library
+- **Gerenciamento de estado**: Zustand com persistência em localStorage
+- **Animações e transições**: Feedback visual em todas as interações
+- **Filtro e busca**: Busca em tempo real e filtro por categoria
+- **Acessibilidade (a11y)**: 
+  - Navegação completa por teclado
+  - ARIA labels descritivos
+  - Skip navigation implementado
+  - Contraste WCAG AA validado
+  - Screen reader friendly
+  - Focus-visible em todos os elementos
+  - Escape fecha modais
+  - [Relatório completo de acessibilidade](./ACCESSIBILITY.md)
+- **SEO**: Metadata otimizada, OpenGraph, keywords relevantes
+- **Sistema de notificações**: Toast com feedback visual
+- **Skeleton loading**: Estados de carregamento
+- **Scroll to top**: Navegação facilitada
+- **Design System**: 70+ CSS variables para tokens de design
+
+## Documentação
+
+- [📋 Checklist de Requisitos](./REQUIREMENTS_CHECKLIST.md) - Verificação completa de todos os requisitos obrigatórios
+- [♿ Relatório de Acessibilidade](./ACCESSIBILITY.md) - Testes e validações WCAG 2.1
 
 ## Decisões Técnicas
 

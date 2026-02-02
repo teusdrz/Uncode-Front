@@ -1,76 +1,158 @@
 .toast {
     position: fixed;
-    bottom: 2rem;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
-    padding: 1rem 1.5rem;
-    border-radius: 0.75rem;
+    transform: translate(-50%, -50%);
+    padding: 2rem 2.5rem;
+    border-radius: 1rem;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 0.75rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    z-index: 9999;
-    animation: slideUp 0.3s ease;
-    min-width: 250px;
-    max-width: 90vw;
+    justify-content: center;
+    gap: 1rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    z-index: 10000;
+    animation: modalAppear 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    min-width: 320px;
+    max-width: 450px;
+    backdrop-filter: blur(10px);
+}
+
+@media (max-width: 640px) {
+    .toast {
+        min-width: 280px;
+        max-width: 90%;
+        padding: 1.75rem 2rem;
+    }
 }
 
 .toast.hide {
-    animation: slideDown 0.3s ease;
+    animation: modalDisappear 0.3s ease forwards;
 }
 
 .toast.success {
-    background: var(--success);
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
     color: white;
+}
+
+.toast.success .icon {
+    width: 4rem;
+    height: 4rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
 }
 
 .toast.error {
-    background: var(--danger);
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
     color: white;
+}
+
+.toast.error .icon {
+    width: 4rem;
+    height: 4rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
 }
 
 .toast.info {
-    background: var(--primary);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
     color: white;
 }
 
+.toast.info .icon {
+    width: 4rem;
+    height: 4rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+}
+
 .icon {
-    font-size: 1.25rem;
+    font-size: 3rem;
     font-weight: 700;
+    line-height: 1;
 }
 
 .message {
-    font-size: 0.9375rem;
-    font-weight: 500;
+    font-size: 1.125rem;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.4;
 }
 
-@keyframes slideUp {
+@keyframes modalAppear {
     from {
         opacity: 0;
-        transform: translateX(-50%) translateY(20px);
+        transform: translate(-50%, -50%) scale(0.7);
     }
 
     to {
         opacity: 1;
-        transform: translateX(-50%) translateY(0);
+        transform: translate(-50%, -50%) scale(1);
     }
 }
 
-@keyframes slideDown {
+@keyframes modalDisappear {
     from {
         opacity: 1;
-        transform: translateX(-50%) translateY(0);
+        transform: translate(-50%, -50%) scale(1);
     }
 
     to {
         opacity: 0;
-        transform: translateX(-50%) translateY(20px);
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+}
+
+/* Backdrop para dar destaque ao modal */
+.toast::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: -1;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
     }
 }
 
 @media (max-width: 768px) {
     .toast {
-        bottom: 1.5rem;
-        padding: 0.875rem 1.25rem;
+        padding: 1.5rem 2rem;
+    }
+
+    .icon,
+    .toast.success .icon,
+    .toast.error .icon,
+    .toast.info .icon {
+        font-size: 2rem;
+        width: 3rem;
+        height: 3rem;
+    }
+
+    .message {
+        font-size: 1rem;
     }
 }
